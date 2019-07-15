@@ -1,17 +1,4 @@
-//sudo-code
-//information to put in:
-//Pike (one location at a time, then we'll condense)
-//minimum customers/hour: 23
-//maximum customer/hour: 65
-//average cookies/customer needs to equal: 6.3
-//calculate the each hour's total sales. [6am, ..., .. ,..., 8pm]
-//
-//output, my code should do what?
-//code needs to generate random customer 
-//1 my code needs to print out the average sales per hour
-//2 based on a randomly generated customer count per day
-
-ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 function averagecookiehour(a, b){
     //this is going to take the average number of customers per day, and the average cookies sold per day, to identify the number of cookies sold each hour
@@ -21,9 +8,23 @@ function averagecookiehour(a, b){
     console.log(`${ServiceHours[h]}: ${calcAvgCookieHour} cookies `);
     return calcAvgCookieHour;
 };
+function avgCust(a, b){
+       
+    //identifies the average number of customers each hour.
+     var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
+     console.log(`${this.name} Has ${randomnumber} customers per hour`);
+     console.log(this.randomnumber);
+ }
+
 
 
 }
+
+// for (i=0; i<ServiceHours.length; i++){
+//     var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+//     customersPerHour.push(randomnumber);
+//     console.log(customersPerHour);
+// };
 
 var pike = {
     name: '1st and Pike',
@@ -32,14 +33,18 @@ var pike = {
    avgPurchase: 6.3,
    customersPerHour: [],
    salesPerHour: [],
-   avgCust: function(){//identifies the average number of customers each hour.
-        var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
-        console.log(`${this.name} Has ${randomnumber} customers per hour`);
-        console.log(this.randomnumber);
-    },
-    averagecookiehour(randomnumber, this.AvgPurchase);
+   buildarray: function(){
+    for (i=0; i<ServiceHours.length; i++){
+        var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+        this.customersPerHour.push(randomnumber);
+        console.log(this.customersPerHour)
+    }
+    }
+}
 
-};
+pike.buildarray();
+   
+console
 console.log(pike);
 // var Seatac = {
 //     name: 'SeaTac Airport',
