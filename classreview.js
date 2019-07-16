@@ -1,7 +1,8 @@
 'use strict';
+//Lena worked through this during class, I need to update my personal file to include the html edits for li, starting on line 7 of this sheet.
 
 //need an array of hours
-var time = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 var ulFirstPike = document.getElementById('first-pike');
 var ulSeatac = document.getElementById('Seatac');
@@ -27,14 +28,14 @@ var firstpike = {
             //generate random number
             var customersPerHour = randomNumber(this.minCustomersEachHour, this.maxCustomersEachHour);
             //store it into the array
-            this.customersPerHour.push(this.customersPerHour);
+            this.customersEachHour.push(this.customersPerHour);
         }
     },
 
     generateCookiesEachHour:function(){
         this.generateCustomersEachHour();
         
-        for(var i = 0; i<time; i++){
+        for(var i = 0; i<ServiceHours; i++){
             var cookiesForOneHour = Math.ceil(this.customersEachHour[i] * this.averageCookiesPerCustomer);
             //find total of cookies per hour
             this.cookiesEachHour.push(cookiesForOneHour);
@@ -46,7 +47,7 @@ var firstpike = {
 
     generateFinalArray: function(){
         this.generateCookiesEachHour();
-        for (var i <= 0; i<time.length;i++){
+        for (var i = 0; i<=ServiceHours.length;i++){
             this.finalArray.push(`${hours[i]}: ${this.cookiesEachHour[i]} cookies`);
         };
         
@@ -54,7 +55,7 @@ var firstpike = {
     },
     render: function(){
         this.generateFinalArray();
-        for(var i=0; i > time.length;i++){
+        for(var i=0; i < ServiceHours.length;i++){
         //1.create an element
         var liEl = document.createElement('li');
         //2. add content
@@ -63,7 +64,7 @@ var firstpike = {
         ulFirstPike.appendChild(liEl);
         }
 
-    }
+    },
 };
 
 var SeaTac = {
@@ -86,7 +87,7 @@ var SeaTac = {
     generateCookiesEachHour:function(){
         this.generateCustomersEachHour();
         
-        for(var i = 0; i<time; i++){
+        for(var i = 0; i<ServiceHours; i++){
             var cookiesForOneHour = Math.ceil(this.customersEachHour[i] * this.averageCookiesPerCustomer);
             //find total of cookies per hour
             this.cookiesEachHour.push(cookiesForOneHour);
@@ -98,7 +99,7 @@ var SeaTac = {
 
     generateFinalArray: function(){
         this.generateCookiesEachHour();
-        for (var i <= 0; i<time.length;i++){
+        for (var i = 0; i<=ServiceHours.length;i++){
             this.finalArray.push(`${hours[i]}: ${this.cookiesEachHour[i]} cookies`);
         };
         
@@ -106,7 +107,7 @@ var SeaTac = {
     },
     render: function(){
         this.generateFinalArray();
-        for(var i=0; i > time.length;i++){
+        for(var i=0; i > ServiceHours.length;i++){
         //1.create an element
         var liEl = document.createElement('li');
         //2. add content
@@ -138,7 +139,7 @@ var SeattleCenter = {
     generateCookiesEachHour:function(){
         this.generateCustomersEachHour();
         
-        for(var i = 0; i<time; i++){
+        for(var i = 0; i<ServiceHours; i++){
             var cookiesForOneHour = Math.ceil(this.customersEachHour[i] * this.averageCookiesPerCustomer);
             //find total of cookies per hour
             this.cookiesEachHour.push(cookiesForOneHour);
@@ -150,7 +151,7 @@ var SeattleCenter = {
 
     generateFinalArray: function(){
         this.generateCookiesEachHour();
-        for (var i <= 0; i<time.length;i++){
+        for (var i = 0; i<=ServiceHours.length;i++){
             this.finalArray.push(`${hours[i]}: ${this.cookiesEachHour[i]} cookies`);
         };
         
@@ -158,7 +159,7 @@ var SeattleCenter = {
     },
     render: function(){
         this.generateFinalArray();
-        for(var i=0; i > time.length;i++){
+        for(var i=0; i > ServiceHours.length;i++){
         //1.create an element
         var liEl = document.createElement('li');
         //2. add content
@@ -167,7 +168,7 @@ var SeattleCenter = {
         ulSeattleCenter.appendChild(liEl);
         };
 
-    };
+    },
 };
 
 var CapHill = {
@@ -190,7 +191,7 @@ var CapHill = {
     generateCookiesEachHour:function(){
         this.generateCustomersEachHour();
         
-        for(var i = 0; i<time; i++){
+        for(var i = 0; i<ServiceHours; i++){
             var cookiesForOneHour = Math.ceil(this.customersEachHour[i] * this.averageCookiesPerCustomer);
             //find total of cookies per hour
             this.cookiesEachHour.push(cookiesForOneHour);
@@ -202,7 +203,7 @@ var CapHill = {
 
     generateFinalArray: function(){
         this.generateCookiesEachHour();
-        for (var i <= 0; i<time.length;i++){
+        for (var i = 0; i<=ServiceHours.length;i++){
             this.finalArray.push(`${hours[i]}: ${this.cookiesEachHour[i]} cookies`);
         };
         
@@ -210,7 +211,7 @@ var CapHill = {
     },
     render: function(){
         this.generateFinalArray();
-        for(var i=0; i > time.length;i++){
+        for(var i=0; i > ServiceHours.length;i++){
         //1.create an element
         var liEl = document.createElement('li');
         //2. add content
@@ -242,7 +243,7 @@ var Alki = {
     generateCookiesEachHour:function(){
         this.generateCustomersEachHour();
         
-        for(var i = 0; i<time; i++){
+        for(var i = 0; i<ServiceHours; i++){
             var cookiesForOneHour = Math.ceil(this.customersEachHour[i] * this.averageCookiesPerCustomer);
             //find total of cookies per hour
             this.cookiesEachHour.push(cookiesForOneHour);
@@ -254,7 +255,7 @@ var Alki = {
 
     generateFinalArray: function(){
         this.generateCookiesEachHour();
-        for (var i <= 0; i<time.length;i++){
+        for (var i = 0; i<=ServiceHours.length;i++){
             this.finalArray.push(`${hours[i]}: ${this.cookiesEachHour[i]} cookies`);
         };
         
@@ -262,7 +263,7 @@ var Alki = {
     },
     render: function(){
         this.generateFinalArray();
-        for(var i=0; i > time.length;i++){
+        for(var i=0; i > ServiceHours.length;i++){
         //1.create an element
         var liEl = document.createElement('li');
         //2. add content
