@@ -52,56 +52,103 @@ var pike = {
 }
 
 pike.buildarray();
-   
-console
-console.log(pike);
-// var Seatac = {
-//     name: 'SeaTac Airport',
-//    minCust: 3,
-//    maxCust: 24,
-//    avgCust: function(){
-//        var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
-//        console.log(this.name);
-//        console.log(randomnumber);
-//    }
-// }
 
-// var SCenter = {
-//     name: 'Seattle Center',
-//    minCust: 11,
-//    maxCust: 38,
-//    avgCust: function(){
-//        var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
-//        console.log(this.name);
-//        console.log(randomnumber);
-//    }
-// }
+var SeaTac = {
+    name: 'SeaTac Airport',
+   minCust: 3, //minimum customers per hour
+   maxCust: 24, //maximum customers per hour
+   avgPurchase: 1.2,
+   customersPerHour: [],
+   salesPerHour: [],
+   totalCookies: 0,
+   buildarray: function(){
+        for (var i=0; i<ServiceHours.length; i++){
+            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+            //The Following line fills the customersPerHour Array
+            this.customersPerHour.push(randomnumber);
+            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
+            //the Following line fills the sales per hour Array
+            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
+            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
 
-// var CapHill = {
-//     name: 'Capitol Hill',
-//    minCust: 20,
-//    maxCust: 38,
-//    avgCust: function(){
-//        var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
-//        console.log(this.name);
-//        console.log(randomnumber);
-//    }
-// }
+        }
+    }
+    
+}
 
-// var Alki = {
-//     name: 'Alki',
-//    minCust: 2,
-//    maxCust: 16,
-//    avgCust: function(){
-//        var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
-//        console.log(this.name);
-//        console.log(randomnumber);
-//    }
-// }
+SeaTac.buildarray();
 
-// var shoplist = [pike, Seatac, SCenter, CapHill, Alki];
+var sCenter = {
+    name: 'Seattle Center',
+   minCust: 11, //minimum customers per hour
+   maxCust: 38, //maximum customers per hour
+   avgPurchase: 3.7,
+   customersPerHour: [],
+   salesPerHour: [],
+   totalCookies: 0,
+   buildarray: function(){
+        for (var i=0; i<ServiceHours.length; i++){
+            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+            //The Following line fills the customersPerHour Array
+            this.customersPerHour.push(randomnumber);
+            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
+            //the Following line fills the sales per hour Array
+            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
+            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
 
-// for (var i=0; i<shoplist.length; i++){
-//     shoplist[i].avgCust()
+        }
+    }
+    
+}
 
-// }
+sCenter.buildarray();
+
+var capHill = {
+    name: 'Capitol Hill',
+   minCust: 20, //minimum customers per hour
+   maxCust: 38, //maximum customers per hour
+   avgPurchase: 2.3,
+   customersPerHour: [],
+   salesPerHour: [],
+   totalCookies: 0,
+   buildarray: function(){
+        for (var i=0; i<ServiceHours.length; i++){
+            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+            //The Following line fills the customersPerHour Array
+            this.customersPerHour.push(randomnumber);
+            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
+            //the Following line fills the sales per hour Array
+            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
+            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
+
+        }
+    }
+    
+}
+
+capHill.buildarray();
+
+var alki = {
+    name: 'Alki',
+   minCust: 2, //minimum customers per hour
+   maxCust: 16, //maximum customers per hour
+   avgPurchase: 4.6,
+   customersPerHour: [],
+   salesPerHour: [],
+   totalCookies: 0,
+   buildarray: function(){
+        for (var i=0; i<ServiceHours.length; i++){
+            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+            //The Following line fills the customersPerHour Array
+            this.customersPerHour.push(randomnumber);
+            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
+            //the Following line fills the sales per hour Array
+            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
+            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
+
+        }
+    }
+    
+}
+
+alki.buildarray();
