@@ -1,3 +1,5 @@
+'use strict';
+
 var ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 function averagecookiehour(a, b){
@@ -32,6 +34,7 @@ var pike = {
    salesPerHour: [],
    totalCookies: 0,
    buildarray: function(){
+       // got random number function from MDN -math.random() doc
         for (var i=0; i<ServiceHours.length; i++){
             var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
             //The Following line fills the customersPerHour Array
