@@ -8,25 +8,20 @@ function averagecookiehour(a, b){
     console.log(`${ServiceHours[h]}: ${calcAvgCookieHour} cookies `);
     return calcAvgCookieHour;
 };
-function avgCust(a, b){
-       
+function avgCust(a, b){     
     //identifies the average number of customers each hour.
      var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
      console.log(`${this.name} Has ${randomnumber} customers per hour`);
      console.log(this.randomnumber);
  }
-
-
-
 }
-
 //CurrentHourSale=avgPurchase * customersPerHour[]
 
-// for (i=0; i<ServiceHours.length; i++){
-//     var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-//     customersPerHour.push(randomnumber);
-//     console.log(customersPerHour);
-// };
+for (i=0; i<ServiceHours.length; i++){
+    var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+    customersPerHour.push(randomnumber);
+    console.log(customersPerHour);
+};
 
 var pike = {
     name: '1st and Pike',
@@ -45,12 +40,9 @@ var pike = {
             //the Following line fills the sales per hour Array
             this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
             console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-
         }
     }
-    
 }
-
 pike.buildarray();
 
 var SeaTac = {
@@ -70,12 +62,9 @@ var SeaTac = {
             //the Following line fills the sales per hour Array
             this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
             console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-
         }
     }
-    
 }
-
 SeaTac.buildarray();
 
 var sCenter = {
@@ -95,12 +84,9 @@ var sCenter = {
             //the Following line fills the sales per hour Array
             this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
             console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-
         }
     }
-    
 }
-
 sCenter.buildarray();
 
 var capHill = {
@@ -120,12 +106,9 @@ var capHill = {
             //the Following line fills the sales per hour Array
             this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
             console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-
         }
     }
-    
 }
-
 capHill.buildarray();
 
 var alki = {
@@ -145,10 +128,8 @@ var alki = {
             //the Following line fills the sales per hour Array
             this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
             console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-
         }
     }
-    
 }
 
 alki.buildarray();
