@@ -20,6 +20,8 @@ function avgCust(a, b){
 
 }
 
+//CurrentHourSale=avgPurchase * customersPerHour[]
+
 // for (i=0; i<ServiceHours.length; i++){
 //     var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
 //     customersPerHour.push(randomnumber);
@@ -33,13 +35,20 @@ var pike = {
    avgPurchase: 6.3,
    customersPerHour: [],
    salesPerHour: [],
+   totalCookies: 0,
    buildarray: function(){
-    for (i=0; i<ServiceHours.length; i++){
-        var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-        this.customersPerHour.push(randomnumber);
-        console.log(this.customersPerHour)
+        for (var i=0; i<ServiceHours.length; i++){
+            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+            //The Following line fills the customersPerHour Array
+            this.customersPerHour.push(randomnumber);
+            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
+            //the Following line fills the sales per hour Array
+            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
+            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
+
+        }
     }
-    }
+    
 }
 
 pike.buildarray();
