@@ -1,3 +1,5 @@
+'use strict';
+
 var ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 function averagecookiehour(a, b){
@@ -15,13 +17,13 @@ function avgCust(a, b){
      console.log(this.randomnumber);
  }
 }
-//CurrentHourSale=avgPurchase * customersPerHour[]
+CurrentHourSale= (calcAvgCookieHour * customersPerHour[i]);
 
-for (i=0; i<ServiceHours.length; i++){
-    var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-    customersPerHour.push(randomnumber);
-    console.log(customersPerHour);
-};
+// for (var i=0; i<ServiceHours.length; i++){
+//     var customersPerHour = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+//     customersPerHour.push(randomCustomerPerHour);
+//     console.log(customersPerHour);
+// };
 
 var pike = {
     name: '1st and Pike',
@@ -32,10 +34,11 @@ var pike = {
    salesPerHour: [],
    totalCookies: 0,
    buildarray: function(){
+       // got random number function from MDN -math.random() doc
         for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
+            var randomCustomerPerHour = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
             //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
+            this.customersPerHour.push(randomCustomerPerHour);
             console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
             //the Following line fills the sales per hour Array
             this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
