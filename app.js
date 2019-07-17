@@ -1,138 +1,48 @@
 'use strict';
 
-var ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+//fill array with times
+var openHoursArr = ['6am', '7am', '8am', '9am', '10 am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
-function averagecookiehour(a, b){
-    //this is going to take the average number of customers per day, and the average cookies sold per day, to identify the number of cookies sold each hour
-    var calcAvgCookieHour = a * b;
-    for(h=0; h<ServiceHours.length; h++) {
-        console.log(ServiceHours[h]);
-    console.log(`${ServiceHours[h]}: ${calcAvgCookieHour} cookies `);
-    return calcAvgCookieHour;
-};
-function avgCust(a, b){     
-    //identifies the average number of customers each hour.
-     var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
-     console.log(`${this.name} Has ${randomnumber} customers per hour`);
-     console.log(this.randomnumber);
- }
-}
-CurrentHourSale= (calcAvgCookieHour * customersPerHour[i]);
+//allLocationsArr to hold current and future locations
+var allLocations = [];
 
-// for (var i=0; i<ServiceHours.length; i++){
-//     var customersPerHour = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-//     customersPerHour.push(randomCustomerPerHour);
-//     console.log(customersPerHour);
-// };
 
-var pike = {
-    name: '1st and Pike',
-   minCust: 23, //minimum customers per hour
-   maxCust: 65, //maximum customers per hour
-   avgPurchase: 6.3,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-       // got random number function from MDN -math.random() doc
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomCustomerPerHour = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomCustomerPerHour);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-pike.buildarray();
 
-var SeaTac = {
-    name: 'SeaTac Airport',
-   minCust: 3, //minimum customers per hour
-   maxCust: 24, //maximum customers per hour
-   avgPurchase: 1.2,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-SeaTac.buildarray();
+//make prototype to autofill (from instance)
+function location.prototype.fill(name, maxCustomers, minCustomers, avgPurchase);
+this.location = name;
+this.maxCustomers = maxCustomers;
+this.minCustomers = minCustomers;
+this.avgPurchase = avgPerchase;
 
-var sCenter = {
-    name: 'Seattle Center',
-   minCust: 11, //minimum customers per hour
-   maxCust: 38, //maximum customers per hour
-   avgPurchase: 3.7,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-sCenter.buildarray();
+location.push(this)
 
-var capHill = {
-    name: 'Capitol Hill',
-   minCust: 20, //minimum customers per hour
-   maxCust: 38, //maximum customers per hour
-   avgPurchase: 2.3,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-capHill.buildarray();
 
-var alki = {
-    name: 'Alki',
-   minCust: 2, //minimum customers per hour
-   maxCust: 16, //maximum customers per hour
-   avgPurchase: 4.6,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
 
-alki.buildarray();
+
+//Need to:
+
+    //name
+    //min
+    //max
+    //avg
+//the information needs to be grabbed from form id=myForm on html
+    //able to receive new location information, and loop into the rest of the page
+
+//create number generator for customers/hour
+
+    //for loop to have a random number of customers per hour
+//total hourly sales
+    //for loop for hours the store is open
+        //multiplies customers *  avg purchse for openHoursArr.length
+//add up each hour's sales together to get var dayTotalSales
+
+//add to table id=myTable of html:
+    //th (table head) 
+        //td enter table data into table head
+            //data should be the name of location
+            //td the amount sold each hour, with a different tr
+        //append the data to the html
+          
+
+//render page
