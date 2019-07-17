@@ -2,6 +2,8 @@ var ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '
 
 var pike = {
     name: '1st and Pike',
+    //syntax for constructor object is:
+    //this.name 
    minCust: 23, //minimum customers per hour
    maxCust: 65, //maximum customers per hour
    avgPurchase: 6.3,
