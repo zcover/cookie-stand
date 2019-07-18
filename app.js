@@ -6,7 +6,6 @@
 
 //fill array with times
 var openHoursArr = ['6am', '7am', '8am', '9am', '10 am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-
 //grabbing the myTable id from html
 var tableBody = document.getElementById('myTable');
 
@@ -14,7 +13,23 @@ var tableBody = document.getElementById('myTable');
 var allLocationsArr = [];
 
 //this array holds the names of all the locations, so they can be later referenced as th data
-var tableHeadersArr = []
+var tableHeadersArr = [];
+
+//
+
+
+
+// //CREATING A LIST IN THE HTML-----------------------------------------
+// var listEl = document.getElementById("numbersList");
+
+// //created tr element "li"
+// var trLi = document.createElement('li');
+
+// //give the element value
+// trLi.textContent = "hello world!"
+
+// //append [apply to html]
+// listEl.appendChild(trLi);
 
 //----------------------------------------------------------\\
 
@@ -50,6 +65,8 @@ function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
 
     this.hourlySalesArr = [];
 
+    this.oneDayTotal = [];
+
     //push into the allLocations array
     allLocationsArr.push(this);
         //push location names into header array
@@ -57,6 +74,7 @@ function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
 
     this.generateCustomerArray();
     this.generateSalesArray();
+    this.generateDailyTotal();
 
 
 };
@@ -80,6 +98,15 @@ Locationbio.prototype.generateSalesArray= function(){
     for(var i=0; i< openHoursArr.length; i++){
         var randomNumber = (Math.ceil(this.customerArray[i] * this.avgPurchase))
         this.hourlySalesArr.push(randomNumber);
+    };
+};
+
+Locationbio.prototype.generateDailyTotal= function(){
+    for(var i=0; i<this.generateSalesArray.length; i++){
+        var hourTotal = 0;
+        hourTotal += this.generateSalesArray[i];
+        // this.oneDayTotal.push(hourTotal);
+        console.log(hourTotal);
     };
 };
 
