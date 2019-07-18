@@ -15,6 +15,9 @@ var allLocationsArr = [];
 //this array holds the names of all the locations, so they can be later referenced as th data
 var tableHeadersArr = [];
 
+//connect javascript to the formid in html
+var formEl = document.getElementById("myForm");
+
 //
 
 
@@ -127,16 +130,19 @@ Locationbio.prototype.generateDailyTotal= function(){
     };
 };
 Locationbio.prototype.generateTableElements= function(){
-    for(i=0;i<openHoursArr.length;i++){
-        var listEl = document.getElementById("numbersList");
-        //created tr element "li"
-        var trLi = document.createElement('li');
+    for(var i=0;i<tableHeadersArr.length;i++){
+            for(var j=0; j<openHoursArr.length; j++){
 
-        //give the element value
-        trLi.textContent = "hello world!"
-
-        //append [apply to html]
-        listEl.appendChild(trLi);
+                var listEl = document.getElementById("table");
+                //created tr element "li"
+                var trEl = document.createElement('tr');
+                
+                //give the element data to enter
+                trEl.textContent = tableHeadersArr[i];
+                
+                //append [apply to html]
+                listEl.appendChild(trLi);
+            };
     };
 };
 
@@ -167,7 +173,7 @@ new Locationbio('john', 5, 2, 0.5);
 
 //FORM------------------------------------------->
 //make prototype to autofill (from instance)
-var formEl = document.getElementById("myForm");
+
 
 formEl.addEventListener("submit", function(event){
     event.preventDefault();
