@@ -31,6 +31,27 @@ var tableHeadersArr = [];
 // //append [apply to html]
 // listEl.appendChild(trLi);
 
+// //-------------------------------------------------------------------
+// var populateTable = function(){
+    
+//     for(var i = 0; i >openHoursArr.length; i++){
+//         var listEl = document.getElementById("numbersList");
+        
+//         //created tr element "li"
+//         var trLi = document.createElement('li');
+        
+//         //give the element value
+//         trLi.textContent = "hello world!"
+        
+//         //append [apply to html]
+//         listEl.appendChild(trLi);
+//         console.log(`i'm inside the for loop`);
+//     };
+//     console.log(`i'm inside the populate function`);
+// };
+
+
+//create table loop.
 //----------------------------------------------------------\\
 
 //Helper Functions---------------------------------
@@ -44,10 +65,6 @@ function handleClick(event){
 function custRandom(minCustomers, maxCustomers) {
     return Math.floor(Math.random() * (maxCustomers - minCustomers + 1)) + minCustomers;
 };
-//multiplies customers *  avgPurchase purchse for openHoursArr.length
-// function salesPerHour(){
-//     daily
-// }
 
 //------------------------------------------------/
 //CONSTUCTOR
@@ -75,6 +92,7 @@ function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
     this.generateCustomerArray();
     this.generateSalesArray();
     this.generateDailyTotal();
+    
 
 
 };
@@ -100,13 +118,25 @@ Locationbio.prototype.generateSalesArray= function(){
         this.hourlySalesArr.push(randomNumber);
     };
 };
-
 Locationbio.prototype.generateDailyTotal= function(){
     for(var i=0; i<this.generateSalesArray.length; i++){
         var hourTotal = 0;
         hourTotal += this.generateSalesArray[i];
         // this.oneDayTotal.push(hourTotal);
         console.log(hourTotal);
+    };
+};
+Locationbio.prototype.generateTableElements= function(){
+    for(i=0;i<openHoursArr.length;i++){
+        var listEl = document.getElementById("numbersList");
+        //created tr element "li"
+        var trLi = document.createElement('li');
+
+        //give the element value
+        trLi.textContent = "hello world!"
+
+        //append [apply to html]
+        listEl.appendChild(trLi);
     };
 };
 
@@ -156,6 +186,7 @@ formEl.addEventListener("submit", function(event){
 Locationbio.prototype.render=function(){
     this.generateCustomerArray();
     this.generateSalesArray();
+    this.generateTableElements();
 
 };
 
