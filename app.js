@@ -1,138 +1,202 @@
 'use strict';
 
-var ServiceHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
-function averagecookiehour(a, b){
-    //this is going to take the average number of customers per day, and the average cookies sold per day, to identify the number of cookies sold each hour
-    var calcAvgCookieHour = a * b;
-    for(h=0; h<ServiceHours.length; h++) {
-        console.log(ServiceHours[h]);
-    console.log(`${ServiceHours[h]}: ${calcAvgCookieHour} cookies `);
-    return calcAvgCookieHour;
-};
-function avgCust(a, b){     
-    //identifies the average number of customers each hour.
-     var randomnumber = Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust);
-     console.log(`${this.name} Has ${randomnumber} customers per hour`);
-     console.log(this.randomnumber);
- }
-}
-CurrentHourSale= (calcAvgCookieHour * customersPerHour[i]);
+//--------------------------------------------------------------
+//GLOBAL VARIABLES
 
-// for (var i=0; i<ServiceHours.length; i++){
-//     var customersPerHour = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-//     customersPerHour.push(randomCustomerPerHour);
-//     console.log(customersPerHour);
+//fill array with times
+var openHoursArr = ['6am', '7am', '8am', '9am', '10 am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+//grabbing the myTable id from html
+var tableBody = document.getElementById('myTable');
+
+//allLocationsArr to hold current and future locations
+var allLocationsArr = [];
+
+//this array holds the names of all the locations, so they can be later referenced as th data
+var tableHeadersArr = [];
+
+//connect javascript to the formid in html
+var formEl = document.getElementById("myForm");
+
+//
+
+
+
+// //CREATING A LIST IN THE HTML-----------------------------------------
+// var listEl = document.getElementById("numbersList");
+
+// //created tr element "li"
+// var trLi = document.createElement('li');
+
+// //give the element value
+// trLi.textContent = "hello world!"
+
+// //append [apply to html]
+// listEl.appendChild(trLi);
+
+// //-------------------------------------------------------------------
+// var populateTable = function(){
+    
+//     for(var i = 0; i >openHoursArr.length; i++){
+//         var listEl = document.getElementById("numbersList");
+        
+//         //created tr element "li"
+//         var trLi = document.createElement('li');
+        
+//         //give the element value
+//         trLi.textContent = "hello world!"
+        
+//         //append [apply to html]
+//         listEl.appendChild(trLi);
+//         console.log(`i'm inside the for loop`);
+//     };
+//     console.log(`i'm inside the populate function`);
 // };
 
-var pike = {
-    name: '1st and Pike',
-   minCust: 23, //minimum customers per hour
-   maxCust: 65, //maximum customers per hour
-   avgPurchase: 6.3,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-       // got random number function from MDN -math.random() doc
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomCustomerPerHour = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomCustomerPerHour);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-pike.buildarray();
 
-var SeaTac = {
-    name: 'SeaTac Airport',
-   minCust: 3, //minimum customers per hour
-   maxCust: 24, //maximum customers per hour
-   avgPurchase: 1.2,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-SeaTac.buildarray();
+//create table loop.
+//----------------------------------------------------------\\
 
-var sCenter = {
-    name: 'Seattle Center',
-   minCust: 11, //minimum customers per hour
-   maxCust: 38, //maximum customers per hour
-   avgPurchase: 3.7,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-sCenter.buildarray();
+//Helper Functions---------------------------------
 
-var capHill = {
-    name: 'Capitol Hill',
-   minCust: 20, //minimum customers per hour
-   maxCust: 38, //maximum customers per hour
-   avgPurchase: 2.3,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
-capHill.buildarray();
+//required for submit pages
+function handleClick(event){
+    event.preventDefault();
 
-var alki = {
-    name: 'Alki',
-   minCust: 2, //minimum customers per hour
-   maxCust: 16, //maximum customers per hour
-   avgPurchase: 4.6,
-   customersPerHour: [],
-   salesPerHour: [],
-   totalCookies: 0,
-   buildarray: function(){
-        for (var i=0; i<ServiceHours.length; i++){
-            var randomnumber = (Math.floor(Math.random() * (this.maxCust - this.minCust +1) + this.minCust));
-            //The Following line fills the customersPerHour Array
-            this.customersPerHour.push(randomnumber);
-            console.log(`${i}) ${this.customersPerHour[i]} customers per hour`);
-            //the Following line fills the sales per hour Array
-            this.salesPerHour.push(CurrentHourSale=this.avgPurchase * this.customersPerHour[i]);
-            console.log(`${ServiceHours[i]}) ${this.salesPerHour[i]} sales per hour`);
-        }
-    }
-}
+};
 
-alki.buildarray();
+function custRandom(minCustomers, maxCustomers) {
+    return Math.floor(Math.random() * (maxCustomers - minCustomers + 1)) + minCustomers;
+};
+
+//------------------------------------------------/
+//CONSTUCTOR
+function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
+    //name
+    this.name = name;
+    //maxCustomers
+    this.maxCustomers = maxCustomers;
+    //minCustomers
+    this.minCustomers = minCustomers;
+    //avgPurchase
+    this.avgPurchase = avgPurchase;
+
+    this.customerArray = [];
+
+    this.hourlySalesArr = [];
+
+    this.oneDayTotal = [];
+
+    //push into the allLocations array
+    allLocationsArr.push(this);
+        //push location names into header array
+    tableHeadersArr.push(this.name);
+
+    this.generateCustomerArray();
+    this.generateSalesArray();
+    this.generateDailyTotal();
+    
+
+
+};
+//--------------------------------------------------
+// END CONSTRUCTOR
+
+//--------------------------------------------------------------
+//PROTOTYPES
+
+//for loop to have a random number of customers per hour
+//create number generator for customers/hour
+    //push random number back into the constructor
+
+Locationbio.prototype.generateCustomerArray= function(){
+    for(var i = 0; i< openHoursArr.length; i++){
+        var randomNumber = custRandom(this.minCustomers, this.maxCustomers);
+        this.customerArray.push(randomNumber)
+    };
+};
+Locationbio.prototype.generateSalesArray= function(){
+    for(var i=0; i< openHoursArr.length; i++){
+        var randomNumber = (Math.ceil(this.customerArray[i] * this.avgPurchase))
+        this.hourlySalesArr.push(randomNumber);
+    };
+};
+Locationbio.prototype.generateDailyTotal= function(){
+    for(var i=0; i<this.generateSalesArray.length; i++){
+        var hourTotal = 0;
+        hourTotal += this.generateSalesArray[i];
+        // this.oneDayTotal.push(hourTotal);
+        console.log(hourTotal);
+    };
+};
+Locationbio.prototype.generateTableElements= function(){
+    for(var i=0;i<tableHeadersArr.length;i++){
+            for(var j=0; j<openHoursArr.length; j++){
+
+                var listEl = document.getElementById("table");
+                //created tr element "li"
+                var trEl = document.createElement('tr');
+                
+                //give the element data to enter
+                trEl.textContent = tableHeadersArr[i];
+                
+                //append [apply to html]
+                listEl.appendChild(trLi);
+            };
+    };
+};
+
+//-------------------------------------------------------------------
+//Need to:
+
+//the information needs to be grabbed from form id=myForm on html
+    //able to receive new location information, and loop into the rest of the page
+
+    
+    //total hourly sales
+    //for loop for hours the store is open
+    //multiplies customers *  avgPurchase purchse for openHoursArr.length
+//add up each hour's sales together to get var dayTotalSales
+
+//add to table id=myTable of html:
+    //th (table head) 
+    //td enter table data into table head
+            //data should be the name of location
+            //td the amount sold each hour, with a different tr
+        //append the data to the html
+          
+        
+        
+//OBJECT INSTANCES----------------------------------------
+new Locationbio('bob', 53, 12, 5.2);
+new Locationbio('john', 5, 2, 0.5);
+
+//FORM------------------------------------------->
+//make prototype to autofill (from instance)
+
+
+formEl.addEventListener("submit", function(event){
+    event.preventDefault();
+    var name = event.target.name.value
+    var maxCustomers = event.target.maxCustomers.value
+    // console.log(maxCustomers);
+    var minCustomers = event.target.minCustomers.value
+    // console.log(minCustomers);
+    var avgPurchase = event.target.avgPurchase.value
+
+    var anotherstore = new Locationbio(name, maxCustomers, minCustomers, avgPurchase)
+    console.log(anotherstore);
+});
+
+//render page --------------------------------------
+Locationbio.prototype.render=function(){
+    this.generateCustomerArray();
+    this.generateSalesArray();
+    this.generateTableElements();
+
+};
+
+for(var i=0; i<allLocationsArr.length; i++){
+allLocationsArr[i].render();
+};
+//END PAGE----------------------------------------------------

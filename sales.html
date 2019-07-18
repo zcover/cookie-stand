@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <title>forms</title>
     </head>
     <body>
-        <main>
-        <h2>"First and Pike"</h2>
-        <ul id="first-pike"></ul>
-        <h2>"SeaTac"</h2>
-        <ul id="Seatac"></ul>
-        <h2>"Seattle Center"</h2>
-        <ul id="Seattle-Center"></ul>
-        <h2>"Capitol Hill"</h2>
-        <ul id="Cap-hill"></ul>
-        <h2>"Alki"</h2>
-        <ul id="Alki"></ul>
-        </main>
-        <h2>JS Table</h2>
-        <table id=table></table>
-        <footer>
-            <script type="text/javascript" src=test.js></script>
-        </footer>
+        <div id="numbersList">
+
+        </div>
+        <form id="myForm">
+            <fieldset>
+                <label>Location Name</label><br />
+                <input name="name" type="text" /></br>
+
+                <label>Estimated Hourly Maximum Customers</label></br>
+                <input name="maxCustomers" type="text"/></br>
+                
+                <label>Estimated Hourly Minimum Customers</label></br>
+                <input name="minCustomers" type="text"/></br>
+                
+                <label>Estimated Sale per Customer</label></br>
+                <input name="avgPurchase" type="text"/></br>
+
+                <label>Location to update:</label>
+                <select name="specifyLocationUpdate">
+                    <option value="blank">[Select Response]</option>
+                    <option value="pike">1st and Pike</option>
+                    <option value="seaCent">Seattle Center</option>
+                    <option value="capHill">Capitol Hill</option>
+                    <option value="alki">Alki</option>
+                    <option value="noChange">[No Changes]</option>
+                </select>
+                <input type="submit" name="submitButton" value="submit" />
+                <!-- <button>Submit</button> -->
+                <!-- either submit or button will do the same thing -->
+
+            </fieldset>
+    </form>
+
+    <table id="myTable">
+        <tbody id="tableBody"></tbody>
+    </table>
+    
     </body>
+    <script type = "text/javascript" src="app.js"></script>
 </html>
