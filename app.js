@@ -7,174 +7,147 @@
 //fill array with times
 var openHoursArr = ['6am', '7am', '8am', '9am', '10 am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 //grabbing the myTable id from html
-var tableBody = document.getElementById('myTable');
-
+var tableBody = document.getElementById('tableBody');
 //allLocationsArr to hold current and future locations
 var allLocationsArr = [];
-
 //this array holds the names of all the locations, so they can be later referenced as th data
 var tableHeadersArr = [];
-
 //connect javascript to the formid in html
 var formEl = document.getElementById("myForm");
-
-//
-
-
-
-// //CREATING A LIST IN THE HTML-----------------------------------------
-// var listEl = document.getElementById("numbersList");
-
-// //created tr element "li"
-// var trLi = document.createElement('li');
-
-// //give the element value
-// trLi.textContent = "hello world!"
-
-// //append [apply to html]
-// listEl.appendChild(trLi);
-
-// //-------------------------------------------------------------------
-// var populateTable = function(){
-    
-//     for(var i = 0; i >openHoursArr.length; i++){
-//         var listEl = document.getElementById("numbersList");
-        
-//         //created tr element "li"
-//         var trLi = document.createElement('li');
-        
-//         //give the element value
-//         trLi.textContent = "hello world!"
-        
-//         //append [apply to html]
-//         listEl.appendChild(trLi);
-//         console.log(`i'm inside the for loop`);
-//     };
-//     console.log(`i'm inside the populate function`);
-// };
-
-
-//create table loop.
 //----------------------------------------------------------\\
-
-//Helper Functions---------------------------------
-
-//required for submit pages
-function handleClick(event){
-    event.preventDefault();
-
-};
-
-function custRandom(minCustomers, maxCustomers) {
-    return Math.floor(Math.random() * (maxCustomers - minCustomers + 1)) + minCustomers;
-};
-
-//------------------------------------------------/
-//CONSTUCTOR
 function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
-    //name
     this.name = name;
-    //maxCustomers
     this.maxCustomers = maxCustomers;
-    //minCustomers
     this.minCustomers = minCustomers;
-    //avgPurchase
     this.avgPurchase = avgPurchase;
-
     this.customerArray = [];
-
     this.hourlySalesArr = [];
-
     this.oneDayTotal = [];
-
-    //push into the allLocations array
     allLocationsArr.push(this);
-        //push location names into header array
     tableHeadersArr.push(this.name);
-
     this.generateCustomerArray();
     this.generateSalesArray();
     this.generateDailyTotal();
-    
-
-
 };
-//--------------------------------------------------
-// END CONSTRUCTOR
+//Helper Functions---------------------------------
 
-//--------------------------------------------------------------
-//PROTOTYPES
+//required for submit pages
+function randomNumber(minCustomers, maxCustomers) {
+    return Math.floor(Math.random() * (maxCustomers - minCustomers + 1)) + minCustomers;
+};
 
-//for loop to have a random number of customers per hour
+function addelement(childElType, childContent, parentEl){
+    var childElement = document.createElement(childElType);
+    childElement.textContent = childContent;
+    parentEl.appendChild(childElement);
+};
+//PROTOTYPES---------------------------------------------------
 //create number generator for customers/hour
     //push random number back into the constructor
-
 Locationbio.prototype.generateCustomerArray= function(){
     for(var i = 0; i< openHoursArr.length; i++){
-        var randomNumber = custRandom(this.minCustomers, this.maxCustomers);
-        this.customerArray.push(randomNumber)
+        var randomCustomerNumber = randomNumber(this.minCustomers, this.maxCustomers);
+        this.customerArray.push(randomCustomerNumber)
     };
 };
 Locationbio.prototype.generateSalesArray= function(){
     for(var i=0; i< openHoursArr.length; i++){
-        var randomNumber = (Math.ceil(this.customerArray[i] * this.avgPurchase))
-        this.hourlySalesArr.push(randomNumber);
-    };
-};
-Locationbio.prototype.generateDailyTotal= function(){
-    for(var i=0; i<this.generateSalesArray.length; i++){
-        var hourTotal = 0;
-        hourTotal += this.generateSalesArray[i];
-        // this.oneDayTotal.push(hourTotal);
-        console.log(hourTotal);
-    };
-};
-Locationbio.prototype.generateTableElements= function(){
-    for(var i=0;i<tableHeadersArr.length;i++){
-            for(var j=0; j<openHoursArr.length; j++){
-
-                var listEl = document.getElementById("table");
-                //created tr element "li"
-                var trEl = document.createElement('tr');
-                
-                //give the element data to enter
-                trEl.textContent = tableHeadersArr[i];
-                
-                //append [apply to html]
-                listEl.appendChild(trLi);
-            };
+        var randomCookiesPerHour = (Math.ceil(this.customerArray[i] * this.avgPurchase))
+        this.hourlySalesArr.push(randomCookiesPerHour);
+        this.oneDayTotal += randomCookiesPerHour
     };
 };
 
-//-------------------------------------------------------------------
-//Need to:
+Locationbio.prototype.renderTable = function(){
+    //generate arrays
+    this.generateCustomerArray();
+    this.generateSalesArray();
+    this.generateTableElements();
 
-//the information needs to be grabbed from form id=myForm on html
-    //able to receive new location information, and loop into the rest of the page
+    // make a tr
+    var trEl = document.createElement('tr');
 
-    
-    //total hourly sales
-    //for loop for hours the store is open
-    //multiplies customers *  avgPurchase purchse for openHoursArr.length
-//add up each hour's sales together to get var dayTotalSales
+    //append to body
+    tableBody.appendChild(trEl);
 
-//add to table id=myTable of html:
-    //th (table head) 
-    //td enter table data into table head
-            //data should be the name of location
-            //td the amount sold each hour, with a different tr
-        //append the data to the html
-          
-        
-        
+
+    //make the store name
+        //make a th
+    var thEl = document.createElement('th');
+
+        //give it content - this.name
+    thEl.textContent = this.name;
+        //append to tr
+    trEl.appendChild(thEl);
+
+    //loop over salesarray
+    for(var i=0; i<openHoursArr.length; i++){
+        var tdEl = document.createElement('td');
+        tdEl.textContent = this.hourlySalesArr[i];
+        trEl.appendChild(tdEl);
+    };
+        //make new td
+    var tdEl = document.createElement('td');
+        //give it content- salesArray[i]
+    thEl.textcontent = this.generateSalesArray[i];
+        //append to tr
+
+    //make the total
+        //make a td
+        //give it content - this.total
+        //append to tr
+};
+
 //OBJECT INSTANCES----------------------------------------
-new Locationbio('bob', 53, 12, 5.2);
-new Locationbio('john', 5, 2, 0.5);
+new Locationbio('firstAndPike', 53, 12, 5.2);
+new Locationbio('Alki', 5, 2, 0.5);
+//-------------------------------------------------------
+function renderHeader(){
+    //create a tr
+    var trEl = document.createElement('tr');
+    //append to the table body
+    tableBody.appendChild(trEl);
+    //create table header (th)
+    var thEl = document.createElement('th');
+    //text content: 'location'
+    thEl.textContent = "Location";
+    //append to (th) to (tr)
+    trEl.appendChild(thEl);
 
-//FORM------------------------------------------->
-//make prototype to autofill (from instance)
+    for(var i=0; i<openHoursArr.length;i++){
+        //make table th
+        var thEl = document.createElement('th');
+        //add text content - hours- at i
+        thEl.textContent = openHoursArr[i];
+        //append to the tr
+        trEl.appendChild(thEl);
 
+    };
+};
+function makeFooterRow(){
+    var trEl = document.createElement('tr');
+    var thEl = document.createElement('tr');
 
+    thEl.textcontent = 'Hourly Totals';
+    trEl.appendChild(thEl);
+    
+    var totalOfTotals = 0;
+    for(var i = 0; i<openHoursArr.length;i++){
+        var hourlyTotal = 0;
+        for(var j =0; j<allLocationsArr.length;j++){
+            hourlyTotal += allLocationsArr[j].hourlySalesArr[i];
+            totalOfTotals += allLocationsArr[j].hourlySalesArr[i];
+        };
+        thEl = document.createElement('th');
+        thEl.textContent = hourlyTotal;
+        trEl.appendChild(thEl);
+    };
+    thEl = document.createElement('th');
+    thEl.textcontent= totalOfTotals;
+    trEl.appendChild(thEl);
+    tableBody.appendChild(trEl);
+
+};
 formEl.addEventListener("submit", function(event){
     event.preventDefault();
     var name = event.target.name.value
@@ -189,14 +162,9 @@ formEl.addEventListener("submit", function(event){
 });
 
 //render page --------------------------------------
-Locationbio.prototype.render=function(){
-    this.generateCustomerArray();
-    this.generateSalesArray();
-    this.generateTableElements();
-
-};
-
+renderHeader();
 for(var i=0; i<allLocationsArr.length; i++){
 allLocationsArr[i].render();
 };
+makeFooterRow();
 //END PAGE----------------------------------------------------
