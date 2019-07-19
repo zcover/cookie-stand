@@ -11,6 +11,8 @@ var allLocationsArr = [];
 var tableHeadersArr = [];
 //connect javascript to the formid in html
 var formEl = document.getElementById("myForm");
+//creating array to hold all locations' total sales
+var totalOfTotalsArr = []
 //----------------------------------------------------------\\
 function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
     this.name = name;
@@ -24,7 +26,7 @@ function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
     tableHeadersArr.push(this.name);
     this.generateCustomerArray();
     this.generateSalesArray();
-    this.generateDailyTotal();
+    // this.generateDailyTotal();
 };
 //Helper Functions---------------------------------
 function randomNumber(minCustomers, maxCustomers) {
@@ -48,8 +50,9 @@ Locationbio.prototype.generateSalesArray= function(){
     for(var i=0; i< openHoursArr.length; i++){
         var randomCookiesPerHour = (Math.ceil(this.customerArray[i] * this.avgPurchase))
         this.hourlySalesArr.push(randomCookiesPerHour);
-        this.oneDayTotal += randomCookiesPerHour
+        this.oneDayTotal += randomCookiesPerHour;
     };
+    console.log(this.oneDayTotal)
 };
 Locationbio.prototype.renderTable = function(){
     //generate arrays
@@ -78,10 +81,14 @@ Locationbio.prototype.renderTable = function(){
         //give it content- salesArray[i]
     thEl.textcontent = this.generateSalesArray[i];
         //append to tr
+    trEl.appendChild(thEl);
     //make the total
         //make a td
+    var tdEl = document.createElement('td');
         //give it content - this.total
+    tdEl.textContent = this.totalOfTotals
         //append to tr
+    trEl.appendChild(tdEl);
 };
 //OBJECT INSTANCES----------------------------------------
 new Locationbio('firstAndPike', 53, 12, 5.2);
@@ -142,7 +149,7 @@ formEl.addEventListener("submit", function(event){
 //render page --------------------------------------
 renderHeader();
 for(var i=0; i<allLocationsArr.length; i++){
-allLocationsArr[i].render();
+allLocationsArr[i].generateTableElements();
 };
 makeFooterRow();
 //END PAGE----------------------------------------------------
