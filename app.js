@@ -1,9 +1,6 @@
 'use strict';
-
-
-//--------------------------------------------------------------
 //GLOBAL VARIABLES
-
+//--------------------------------------------------------------
 //fill array with times
 var openHoursArr = ['6am', '7am', '8am', '9am', '10 am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 //grabbing the myTable id from html
@@ -30,12 +27,9 @@ function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
     this.generateDailyTotal();
 };
 //Helper Functions---------------------------------
-
-//required for submit pages
 function randomNumber(minCustomers, maxCustomers) {
     return Math.floor(Math.random() * (maxCustomers - minCustomers + 1)) + minCustomers;
 };
-
 function addelement(childElType, childContent, parentEl){
     var childElement = document.createElement(childElType);
     childElement.textContent = childContent;
@@ -57,29 +51,22 @@ Locationbio.prototype.generateSalesArray= function(){
         this.oneDayTotal += randomCookiesPerHour
     };
 };
-
 Locationbio.prototype.renderTable = function(){
     //generate arrays
     this.generateCustomerArray();
     this.generateSalesArray();
     this.generateTableElements();
-
     // make a tr
     var trEl = document.createElement('tr');
-
     //append to body
     tableBody.appendChild(trEl);
-
-
     //make the store name
         //make a th
     var thEl = document.createElement('th');
-
         //give it content - this.name
     thEl.textContent = this.name;
         //append to tr
     trEl.appendChild(thEl);
-
     //loop over salesarray
     for(var i=0; i<openHoursArr.length; i++){
         var tdEl = document.createElement('td');
@@ -91,13 +78,11 @@ Locationbio.prototype.renderTable = function(){
         //give it content- salesArray[i]
     thEl.textcontent = this.generateSalesArray[i];
         //append to tr
-
     //make the total
         //make a td
         //give it content - this.total
         //append to tr
 };
-
 //OBJECT INSTANCES----------------------------------------
 new Locationbio('firstAndPike', 53, 12, 5.2);
 new Locationbio('Alki', 5, 2, 0.5);
@@ -113,7 +98,6 @@ function renderHeader(){
     thEl.textContent = "Location";
     //append to (th) to (tr)
     trEl.appendChild(thEl);
-
     for(var i=0; i<openHoursArr.length;i++){
         //make table th
         var thEl = document.createElement('th');
@@ -121,16 +105,13 @@ function renderHeader(){
         thEl.textContent = openHoursArr[i];
         //append to the tr
         trEl.appendChild(thEl);
-
     };
 };
 function makeFooterRow(){
     var trEl = document.createElement('tr');
     var thEl = document.createElement('tr');
-
     thEl.textcontent = 'Hourly Totals';
     trEl.appendChild(thEl);
-    
     var totalOfTotals = 0;
     for(var i = 0; i<openHoursArr.length;i++){
         var hourlyTotal = 0;
@@ -146,7 +127,6 @@ function makeFooterRow(){
     thEl.textcontent= totalOfTotals;
     trEl.appendChild(thEl);
     tableBody.appendChild(trEl);
-
 };
 formEl.addEventListener("submit", function(event){
     event.preventDefault();
@@ -156,11 +136,9 @@ formEl.addEventListener("submit", function(event){
     var minCustomers = event.target.minCustomers.value
     // console.log(minCustomers);
     var avgPurchase = event.target.avgPurchase.value
-
     var anotherstore = new Locationbio(name, maxCustomers, minCustomers, avgPurchase)
     console.log(anotherstore);
 });
-
 //render page --------------------------------------
 renderHeader();
 for(var i=0; i<allLocationsArr.length; i++){
