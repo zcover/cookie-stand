@@ -21,7 +21,7 @@ function Locationbio(name, maxCustomers, minCustomers, avgPurchase){
     this.avgPurchase = avgPurchase;
     this.customerArray = [];
     this.hourlySalesArr = [];
-    this.oneDayTotal = [];
+    this.oneDayTotal = 0;
     allLocationsArr.push(this);
     tableHeadersArr.push(this.name);
     this.generateCustomerArray();
@@ -54,46 +54,39 @@ Locationbio.prototype.generateSalesArray= function(){
     };
     console.log(this.oneDayTotal)
 };
+//Locationbio.protoype.generateTableContents = function(){
+    //what are we doing?
+    //we need to access the DOM
+    //we need to create tr's,
+    //we need to give the tr data (td)
+    //we need to loop, so that this happens for every hour
+    //for every location
+    //the location name needs to be 
+//}
 Locationbio.prototype.renderTable = function(){
-    //generate arrays
-    this.generateCustomerArray();
-    this.generateSalesArray();
-    this.generateTableElements();
-    // make a tr
-    var trEl = document.createElement('tr');
-    //append to body
-    tableBody.appendChild(trEl);
-    //make the store name
-        //make a th
     var thEl = document.createElement('th');
-        //give it content - this.name
-    thEl.textContent = this.name;
-        //append to tr
+    var trEl = document.createElement('tr');
+
+    tableBody.appendChild(trEl);
+
+    thEl.textContent=this.name;
     trEl.appendChild(thEl);
-    //loop over salesarray
+
     for(var i=0; i<openHoursArr.length; i++){
         var tdEl = document.createElement('td');
         tdEl.textContent = this.hourlySalesArr[i];
         trEl.appendChild(tdEl);
     };
-        //make new td
-    var tdEl = document.createElement('td');
-        //give it content- salesArray[i]
-    thEl.textcontent = this.generateSalesArray[i];
-        //append to tr
-    trEl.appendChild(thEl);
-    //make the total
-        //make a td
-    var tdEl = document.createElement('td');
-        //give it content - this.total
-    tdEl.textContent = this.totalOfTotals
-        //append to tr
+
+    tdEl = document.createElement('td');
+    tdEl.textContent=this.oneDayTotal;
     trEl.appendChild(tdEl);
 };
-//OBJECT INSTANCES----------------------------------------
+
+// //OBJECT INSTANCES----------------------------------------
 new Locationbio('firstAndPike', 53, 12, 5.2);
 new Locationbio('Alki', 5, 2, 0.5);
-//-------------------------------------------------------
+// //-------------------------------------------------------
 function renderHeader(){
     //create a tr
     var trEl = document.createElement('tr');
@@ -105,7 +98,7 @@ function renderHeader(){
     thEl.textContent = "Location";
     //append to (th) to (tr)
     trEl.appendChild(thEl);
-    for(var i=0; i<openHoursArr.length;i++){
+    for(var i=0; i<openHoursArr.length +1 ;i++){
         //make table th
         var thEl = document.createElement('th');
         //add text content - hours- at i
@@ -113,12 +106,19 @@ function renderHeader(){
         //append to the tr
         trEl.appendChild(thEl);
     };
+     thEl.textContent = "Total";
+     trEl.appendChild(thEl);
 };
+
+
 function makeFooterRow(){
     var trEl = document.createElement('tr');
-    var thEl = document.createElement('tr');
-    thEl.textcontent = 'Hourly Totals';
+    var thEl = document.createElement('th');
+
+    tableBody.appendChild(trEl);
+    thEl.textContent = 'Hourly Totals';
     trEl.appendChild(thEl);
+
     var totalOfTotals = 0;
     for(var i = 0; i<openHoursArr.length;i++){
         var hourlyTotal = 0;
@@ -126,15 +126,18 @@ function makeFooterRow(){
             hourlyTotal += allLocationsArr[j].hourlySalesArr[i];
             totalOfTotals += allLocationsArr[j].hourlySalesArr[i];
         };
+
         thEl = document.createElement('th');
         thEl.textContent = hourlyTotal;
         trEl.appendChild(thEl);
     };
+
     thEl = document.createElement('th');
-    thEl.textcontent= totalOfTotals;
+    thEl.textContent= totalOfTotals;
     trEl.appendChild(thEl);
-    tableBody.appendChild(trEl);
 };
+
+
 formEl.addEventListener("submit", function(event){
     event.preventDefault();
     var name = event.target.name.value
@@ -145,11 +148,14 @@ formEl.addEventListener("submit", function(event){
     var avgPurchase = event.target.avgPurchase.value
     var anotherstore = new Locationbio(name, maxCustomers, minCustomers, avgPurchase)
     console.log(anotherstore);
+    //this console log lists the information recieved by the user
 });
-//render page --------------------------------------
+// //render page --------------------------------------
 renderHeader();
-for(var i=0; i<allLocationsArr.length; i++){
-allLocationsArr[i].generateTableElements();
-};
+for(var i = 0; i< allLocationsArr.length; i++){
+    allLocationsArr[i].renderTable();
+    // renderTable();
+}
+
 makeFooterRow();
-//END PAGE----------------------------------------------------
+// //END PAGE----------------------------------------------------
