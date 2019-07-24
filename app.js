@@ -54,15 +54,7 @@ Locationbio.prototype.generateSalesArray= function(){
     };
     console.log(this.oneDayTotal)
 };
-//Locationbio.protoype.generateTableContents = function(){
-    //what are we doing?
-    //we need to access the DOM
-    //we need to create tr's,
-    //we need to give the tr data (td)
-    //we need to loop, so that this happens for every hour
-    //for every location
-    //the location name needs to be 
-//}
+
 Locationbio.prototype.renderTable = function(){
     var thEl = document.createElement('th');
     var trEl = document.createElement('tr');
