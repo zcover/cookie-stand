@@ -1,5 +1,9 @@
-body {
-    background: rgb(230, 112, 83)
+html {
+    background: url(../img/family.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 h1 {
     font-size: 85px;
@@ -7,8 +11,8 @@ h1 {
     z-index: 0;
 }
 #logo {
-    float: top;
     float: left;
+    float: top;
     margin: 20px;
     border: solid 3px lightblue;
     z-index: 1;
@@ -21,7 +25,9 @@ nav li {
     background-color: white;
     font-size: 1.2em;
 }
-
 #headerbreak {
     color: blue
+}
+body {
+    background-color: rgba(240, 240, 240, 0.349);
 }
