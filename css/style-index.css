@@ -47,17 +47,27 @@ body {
     margin: auto;
     margin-top: 3em;
 }
-#photos {
-    display: inline-block;
-    text-align: center;
-    height: 76px;
-    width: 320px;
-}
 #tripleTextBox {
     height: 76px;
     text-align: center;
-    margin: .5em;
+    margin: auto;
 }
+.textBoxes {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#boxOne{
+    float:left;
+    margin-right: 15%;
+}
+#boxTwo {
+    display:inline-block;
+}
+#boxThree{
+    float:right;
+}
+
 .textBoxes {
     display: inline-block;
     width: 320px;
