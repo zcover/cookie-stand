@@ -38,7 +38,7 @@ nav li {
     background-color: salmon;
 }
 body {
-    background-color: rgba(240, 240, 240, 0.349);
+    background-color: rgba(105, 105, 105, 0.39);
 }
 #hero {
     display: block;
@@ -47,31 +47,34 @@ body {
     margin: auto;
     margin-top: 3em;
 }
-#tripleTextBox {
-    height: 76px;
-    text-align: center;
-    margin: auto;
-}
-.textBoxes {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 #boxOne{
     float:left;
-    margin-right: 15%;
+    margin-left: 5%;
 }
 #boxTwo {
-    display:inline-block;
+    margin-left: 8%;
+    margin-right: 5%;
 }
 #boxThree{
     float:right;
-}
-
-.textBoxes {
-    display: inline-block;
+    margin-right: 5%;
+}#tripleTextBox {
     width: 320px;
     border: solid rgba(204, 204, 204, 0.349) 5px;
     background-color: rgba(255, 52, 1, 0.349);
-    margin: 1.5em;
+    /* margin: 1.5em; */
+    /* height: auto; */
+}
+#TextOne {
+    float: left;
+    margin-left: 5%;
+}
+#TextTwo {
+    margin-left: 8%;
+    margin-right: 5%;
+}
+#TextThree {
+    float:right;
+    margin-right: 5%;
 }
