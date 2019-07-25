@@ -42,12 +42,26 @@ body {
 }
 #hero {
     display: block;
+    height: 450px;
+    width: 700px;
     margin: auto;
     margin-top: 3em;
 }
-.infoBoxes {
-    display: block;
+#photos {
+    display: inline-block;
     text-align: center;
-    margin-right: 10%;
-    margin-left: 10px;
+    height: 76px;
+    width: 320px;
+}
+#tripleTextBox {
+    height: 76px;
+    text-align: center;
+    margin: .5em;
+}
+.textBoxes {
+    display: inline-block;
+    width: 320px;
+    border: solid rgba(204, 204, 204, 0.349) 5px;
+    background-color: rgba(255, 52, 1, 0.349);
+    margin: 1.5em;
 }
